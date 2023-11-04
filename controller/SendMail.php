@@ -7,6 +7,7 @@ require '../vendor/autoload.php';
 $mail = new PHPMailer(true);
 $code_status = 400;
 $data = ['status' => false, 'msg' => 'No hay datos para enviar'];
+$basic_uri =  $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"]. "/VIP/ol";
 
     if(isset($_REQUEST['id']) && isset($_REQUEST['email']) && isset($_REQUEST['utm_type']) && $_REQUEST['utm_type'] == 'download' && isset($_REQUEST['utm_group'])){
         $id = $_REQUEST['id'];
@@ -34,7 +35,7 @@ $data = ['status' => false, 'msg' => 'No hay datos para enviar'];
             $mail->Body = '<h2>Hola, espero que estés teniendo un buen día.</h2>
                 <p>A continuación encontrarás el enlace para descargar el archivo que solicitaste. Por favor, haz clic en el siguiente enlace para descargar el archivo:</p>
                 <br>
-                http://localhost/getleedseee/next/?utm_m='.str_replace("&", "%26", base64_encode($email)).'&utm_id='.$id.'&utm_group='.$_REQUEST['utm_group'].'
+                '.$basic_uri.'/next/?utm_m='.str_replace("&", "%26", base64_encode($email)).'&utm_id='.$id.'&utm_group='.$_REQUEST['utm_group'].'
                 <br>
                 <p>Si tienes algún problema para descargar el archivo, por favor házmelo saber y estaré encantado de ayudarte.</p>
                 <p>Ten en cuenta que este correo electrónico es confidencial y solo está destinado al destinatario. Si has recibido este correo electrónico por error, por favor avísame inmediatamente y elimina este correo electrónico de tu sistema.
@@ -102,7 +103,7 @@ $data = ['status' => false, 'msg' => 'No hay datos para enviar'];
             $mail->Body = '<h2>Hola, espero que estés teniendo un buen día.</h2>
                 <p>Hemos trabajado duro para crear algo especial y estamos emocionados de que lo veas</p>
                 <p>Simplemente haz clic en el siguiente enlace:</p>
-                http://localhost/getleedseee/next/?utm_m='.str_replace("&", "%26", base64_encode($email)).'&utm_group='.$group.'&utm_url='.$url.'
+                '.$basic_uri.'/next/?utm_m='.str_replace("&", "%26", base64_encode($email)).'&utm_group='.$group.'&utm_url='.$url.'
                 <br>
                 <p>¡Gracias por tu tiempo y esperamos que disfrutes de la campaña!
 

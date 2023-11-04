@@ -1,6 +1,7 @@
 <?php
 
     require '../controller/MailerLiteConnect.php';
+    require '../controller/vip.php';
 
     if(isset($_GET['utm_m']) && isset($_GET['utm_group']) ){
         $group = $_GET['utm_group'];
@@ -9,7 +10,12 @@
             $id =  $_GET['utm_id'];
             $mailerLite = new MailerLiteConnect();
             if($mailerLite->validateUser($email, $group)){
-                header('Location: https://especialistasenexcel.com/VIP/usuariovip.php?idLink='.$id);
+                $data = getUrlFile($id);
+                if($data["exito"]){
+                    $url = $data['linkUs'];
+                    header('Location: '.$url);
+                }
+                
             }
         }
         if(isset($_GET['utm_url'])){
@@ -22,6 +28,8 @@
             }
         }
     }
+
+    header('Location: https://especialistasenexcel.com/VIP/ol/');
 
     
 

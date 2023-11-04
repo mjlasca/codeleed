@@ -12,8 +12,8 @@ if(utmSubject != '')
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
-
-    
+    const sub = document.getElementById('sub');
+    sub.innerText = 'Enviando correo...';
 
     const formData = new FormData(form);
     formData.append('id',id);
@@ -27,17 +27,23 @@ form.addEventListener('submit', async (event) => {
     });
     const data = await response.json();
     var msg = document.getElementById('msg');
-    console.log(data);
+
     if(data.status == false){
         msg.classList.remove('alert-success');
         msg.classList.add('alert-danger');
-        msg.innerHTML = '<strong>No hemos podido enviar el correo</strong> Inténtalo nuevamente en un minuto';
+        if(utmType != null)
+            msg.innerHTML = '<strong>No hemos podido enviar el correo</strong> Inténtalo nuevamente en un minuto';
+        else
+            msg.innerHTML = '<strong>No hemos podido enviar el correo</strong> La URL no esta bien formada, por favor vuelve a dar clic en el enlace original';
+        
     }else{
         document.getElementById('email').value = '';
         msg.classList.remove('alert-danger');
         msg.classList.add('alert-success');
         msg.innerHTML = '<strong>Hemos enviado un correo electrónico, por favor revisa tu bandeja de entrada o spam</strong>';
     }
+
+    sub.innerText = 'Enviar';
 
 });
 
