@@ -21,7 +21,7 @@ form.addEventListener('submit', async (event) => {
     formData.append('utm_group',utmGroup);
     formData.append('utm_subject',utmSubject);
     formData.append('utm_url',utmUrl);
-    const response = await fetch('/getleedseee/controller/SendMail.php', {
+    const response = await fetch('/VIP/ol/controller/SendMail.php', {
     method: 'POST',
     body: formData
     });
