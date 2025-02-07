@@ -1,2 +1,3 @@
 # Ignorar la carpeta vendor
 /vendor
+*.zip
