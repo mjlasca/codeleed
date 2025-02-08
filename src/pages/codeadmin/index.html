@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Descarga de archivo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <style>
+        .btn-primary{
+            background-color: #742575 !important;
+            color: #fff;
+        }
+        .bg-primary{
+            background-color: #742575 !important;
+        }
+        .card-aut{
+            border-radius: 10px;
+            background-color: #fffbff;
+            border: solid 1px #742575;
+        }
+        .img_logo img{
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .hide{
+            display: none;
+        }
+        input{
+            margin-bottom: 5px;
+        }
+        .with-errors{
+            color: red;
+            padding: 15px;
+        }
+
+    </style>
+
+</head>
+<body class="m-0 p-3">
+
+    <div class="m-0 container">
+        <div class="col-12 img_logo">
+            <img src="https://especialistasenexcel.com/wp-content/uploads/2022/11/cropped-Logo-y-texto-3-1-600x97.png" alt="Logo Automatizador">
+        </div>
+
+        <div class="form">
+            <form method="post">
+                <div class="mb-3">
+                  <label for="code" class="form-label">Código</label>
+                  <input type="number" class="form-control" id="code" placeholder="Escribe el código">
+                </div>
+                <div class="mb-3">
+                  <label for="url_redirect" class="form-label">Url de redirección</label>
+                  <input type="text" class="form-control" id="url_redirect" placeholder="Escribe la url de redirección">
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Categoría</label>
+                    <input type="text" class="form-control" id="category" placeholder="Escribe la categoría">
+                  </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <div class="list">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Url de redirección</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="list-code">
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+        
+    </div>
+    <script src="../../js/form-admin.js"></script>
+
+</body>
+</html>
