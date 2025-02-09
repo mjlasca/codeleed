@@ -8,7 +8,6 @@ form.addEventListener('submit', async (event) => {
     if(!mail.parentNode.classList.contains('hide'))
         mail.parentNode.classList.add('hide');
     const data = await validateCode(code);
-    console.log(data);
     if(data == undefined){
         error.textContent = "No existe el código ingresado";
     }

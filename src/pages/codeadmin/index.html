@@ -30,8 +30,8 @@
         input{
             margin-bottom: 5px;
         }
-        .with-errors{
-            color: red;
+        .msg-response{
+            color: green;
             padding: 15px;
         }
 
@@ -47,6 +47,7 @@
 
         <div class="form">
             <form method="post">
+                <input type="hidden" value="" id="edit">
                 <div class="mb-3">
                   <label for="code" class="form-label">Código</label>
                   <input type="number" class="form-control" id="code" placeholder="Escribe el código">
@@ -59,7 +60,9 @@
                     <label for="category" class="form-label">Categoría</label>
                     <input type="text" class="form-control" id="category" placeholder="Escribe la categoría">
                   </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="javascript:location.reload();" class="btn btn-warning hide create-reg">Cancelar</a>
+                <div class="msg-response"></div>
             </form>
         </div>
 
