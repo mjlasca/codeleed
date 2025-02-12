@@ -4,10 +4,10 @@ use Dotenv\Dotenv;
 
 class SQL {
     private $pdo;
-    private $host = 'localhost';
-    private $dbname = 'leedseee';
-    private $user = 'root';
-    private $pass = '';
+    private $host;
+    private $dbname;
+    private $user;
+    private $pass;
 
     public function __construct() {
 		
