@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 use MailerLiteApi\MailerLite;
 
     class MailerLiteConnect
@@ -11,7 +11,7 @@ use MailerLiteApi\MailerLite;
             $this->mailerliteClient = new MailerLite(['api_key' => $key]);
         }
 
-       public function validateUser($mail, $groupId = 103829400057808272){
+       public function validateUser($mail, $url_download, $groupId = 145965431098705403){
             $groups = $this->mailerliteClient->groups();
             $users = $this->mailerliteClient->subscribers();
             $subscriber = $users->find($mail);
@@ -21,11 +21,10 @@ use MailerLiteApi\MailerLite;
                 $groupSubscribers = $groups->getSubscriber($groupId, $subscriberId);
  
                 if(count((array)$groupSubscribers) < 4){
-
                     $subscriber = [
                     'email' => $mail,
+                    'url_download' => $url_download
                     ];
-        
                     try{
                         $groups->addSubscriber($groupId, $subscriber); 
                         return true;

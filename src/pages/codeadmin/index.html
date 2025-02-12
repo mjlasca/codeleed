@@ -42,24 +42,29 @@
 
     <div class="m-0 container">
         <div class="col-12 img_logo">
-            <img src="https://especialistasenexcel.com/wp-content/uploads/2022/11/cropped-Logo-y-texto-3-1-600x97.png" alt="Logo Automatizador">
+            <a href="/codeleedeee">
+                <img src="https://especialistasenexcel.com/wp-content/uploads/2022/11/cropped-Logo-y-texto-3-1-600x97.png" alt="Logo Automatizador">
+            </a>
         </div>
-
         <div class="form">
             <form method="post">
                 <input type="hidden" value="" id="edit">
                 <div class="mb-3">
                   <label for="code" class="form-label">Código</label>
-                  <input type="number" class="form-control" id="code" placeholder="Escribe el código">
+                  <input type="number" class="form-control" id="code" placeholder="Escribe el código" required>
                 </div>
                 <div class="mb-3">
-                  <label for="url_redirect" class="form-label">Url de redirección</label>
-                  <input type="text" class="form-control" id="url_redirect" placeholder="Escribe la url de redirección">
+                  <label for="url_download" class="form-label">Url de descarga</label>
+                  <input type="url" class="form-control" id="url_download" placeholder="Escribe la url de descarga">
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Categoría</label>
                     <input type="text" class="form-control" id="category" placeholder="Escribe la categoría">
-                  </div>
+                </div>
+                <div class="mb-3">
+                    <label for="url_redirect" class="form-label">Url de redirección</label>
+                    <input type="url" class="form-control" id="url_redirect" placeholder="Escribe la url de redirección">
+                </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
                 <a href="javascript:location.reload();" class="btn btn-warning hide create-reg">Cancelar</a>
                 <div class="msg-response"></div>
@@ -71,8 +76,9 @@
                 <thead>
                     <tr>
                         <th>Código</th>
-                        <th>Url de redirección</th>
+                        <th>Url de descarga</th>
                         <th>Categoría</th>
+                        <th>Url de redirección</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -85,7 +91,7 @@
     </div>
         
     </div>
-    <script src="../../js/form-admin.js"></script>
+    <script src="../../js/form-admin.js?ver=12"></script>
 
 </body>
 </html>

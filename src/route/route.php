@@ -1,5 +1,5 @@
 <?php
-include("../../../SQL.php");
+include("../../SQL.php");
 include("../services/AccessRequest.php");
 include("../controller/LeedsController.php");
 include("../controller/AdminLeedsController.php");
@@ -23,6 +23,10 @@ if(isset($input['codeDelete'])){
 if(isset($input['code'])){
     $admin = new AdminLeedsController();
     $admin->createOrUpdateList($input);
+}
+if(isset($input['sendmail'])){
+    $admin = new AdminLeedsController();
+    $admin->sendMail($input);
 }
 if(isset($_GET['list_code'])){
 	$admin = new AdminLeedsController();

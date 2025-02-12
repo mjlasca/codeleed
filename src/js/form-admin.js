@@ -5,6 +5,7 @@ const codeH = document.querySelector('#code');
 const urlRedirectH = document.querySelector('#url_redirect');
 const categoryH = document.querySelector('#category');
 const editH = document.querySelector('#edit');
+const urlDownloadH = document.querySelector('#url_download');
 codeList();
 codeH.addEventListener('input', function(event) {
     codeList(this.value);
@@ -16,8 +17,10 @@ form.addEventListener('submit', async (event) => {
         code : codeH.value,
         category : categoryH.value,
         url_redirect : urlRedirectH.value,
-        edit : editH.value
+        edit : editH.value,
+        url_download : urlDownloadH.value
     }
+    
     createOrUpdate(obj);
 });
 async function createOrUpdate(data) {
@@ -37,6 +40,7 @@ async function createOrUpdate(data) {
             else
                 msg.textContent = "Se ha creado el registro con éxito";
             form.reset();
+            form.querySelector('.create-reg').classList.add('hide');
             return result;
         } else {
             return false;
@@ -120,8 +124,9 @@ async function codeList(search = '') {
             Object.keys(result).forEach(key => {
                 tds += `<tr>
                     <td>${result[key].code}</td>
-                    <td>${result[key].url_redirect}</td>
+                    <td>${result[key].url_download}</td>
                     <td>${result[key].category}</td>
+                    <td>${result[key].url_redirect}</td>
                     <td class="actions">
                         <button class="btn btn-primary" onclick="updateReg(${result[key].code})">M</button>
                         <button class="btn btn-danger" onclick="deleteReg(${result[key].code})">E</button>
