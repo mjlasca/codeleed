@@ -1,4 +1,6 @@
 <?php
+require '../../vendor/autoload.php';
+use Dotenv\Dotenv;
 
 class SQL {
     private $pdo;
@@ -10,6 +12,13 @@ class SQL {
     public function __construct() {
 		
         try {
+            $dotenv = Dotenv::createImmutable('../../');
+            $dotenv->load();
+            $this->host = $_ENV['DB_HOST'];
+            $this->dbname = $_ENV['DB_NAME'];
+            $this->user = $_ENV['DB_USER'];
+            $this->pass = $_ENV['DB_PASS'];
+
             $this->pdo = new PDO("mysql:host={$this->host};dbname={$this->dbname};charset=utf8", $this->user, $this->pass, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC

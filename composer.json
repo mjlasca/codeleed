@@ -5,7 +5,8 @@
         "symfony/http-client": "^6.3",
         "nyholm/psr7": "^1.8",
         "php-http/guzzle6-adapter": "^2.0",
-        "mailerlite/mailerlite-php": "^1.0"
+        "mailerlite/mailerlite-php": "^1.0",
+        "vlucas/phpdotenv": "^5.6"
     },
     "config": {
         "allow-plugins": {
