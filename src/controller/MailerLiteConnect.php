@@ -1,6 +1,4 @@
 <?php
-
-require '../../vendor/autoload.php';
 use MailerLiteApi\MailerLite;
 use Dotenv\Dotenv;
 
@@ -10,13 +8,13 @@ use Dotenv\Dotenv;
         private $groupId;
 
         public function __construct() {
-            $dotenv = Dotenv::createImmutable('../../');
+            $dotenv = Dotenv::createImmutable(__DIR__ .'/../../');
             $dotenv->load();
             $this->groupId = $_ENV['MAIL_GID'];
             $this->mailerliteClient = new MailerLite(['api_key' => $_ENV['MAIL_KEY']]);
         }
 
-       public function validateUser($mail, $url_download){
+       public function validateUser($mail){
             $groups = $this->mailerliteClient->groups();
             $users = $this->mailerliteClient->subscribers();
             $subscriber = $users->find($mail);
@@ -27,8 +25,7 @@ use Dotenv\Dotenv;
  
                 if(count((array)$groupSubscribers) < 4){
                     $subscriber = [
-                    'email' => $mail,
-                    'url_download' => $url_download
+                    'email' => $mail
                     ];
                     try{
                         $groups->addSubscriber($this->groupId, $subscriber); 

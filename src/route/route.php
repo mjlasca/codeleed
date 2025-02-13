@@ -3,6 +3,8 @@ include("../../SQL.php");
 include("../services/AccessRequest.php");
 include("../controller/LeedsController.php");
 include("../controller/AdminLeedsController.php");
+require '../../vendor/autoload.php';
+
 
 $validateRequest = new AccessRequest();
 $validateRequest->isLocalRequest();

@@ -34,34 +34,35 @@
             color: red;
             padding: 15px;
         }
+        .formio{
+            margin-top: -200px;
+        }
 
     </style>
 
 </head>
 <body class="m-0 p-3">
 
-    <div class="m-0 vh-100 justify-content-center align-items-center d-flex">
-        <div class="col-sm-4">
+    <div class="m-0 vh-100 justify-content-center align-items-center d-flex ">
+        <div class="col-sm-4 formio">
             <div class="col-12 img_logo">
                 <a href="/codeleed">
-                    <img src="https://especialistasenexcel.com/wp-content/uploads/2022/11/cropped-Logo-y-texto-3-1-600x97.png" alt="Logo Automatizador">
+                    <img src="assets/img/ElAutomatizadorIO.png" alt="Logo Automatizador">
                 </a>
             </div>
             <div class="col-12 card-aut px-3">
                 <div class="p-2">
                     
-                    <h2 class="py-3" id="title-form">Descarga el archivo del vídeo</h2>
+                    <h2 class="py-3" id="title-form">Ingresa el código a consultar</h2>
                     
                     <form id="email-form" method="post" action="#" class="form-horizontal" role="form">
                         <div class="form-group">
                             <div>
-                                <label>Por favor ingrese el código</label>
-                                <input type="number" class="form-control" id="code" name="code" placeholder="Escribe el código aquí" required>
+                                <input type="text" pattern="^[0-9]+$" class="form-control" id="code" name="code" placeholder="Escribe el código aquí" title="Solo se permiten números" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="hide">
-                                <label>Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico aquí" maxlength="150">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa el correo electrónico aquí" maxlength="150">
                             </div>
                         </div>
                         <div class="help-block with-errors"></div>
