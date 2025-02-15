@@ -4,11 +4,17 @@ require 'MailerLiteConnect.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
 
 class AdminLeedsController {
     private $mail;
+    private $mailIo;
+    private $passIo;
     public function __construct() {
-       
+        $dotenv = Dotenv::createImmutable(__DIR__ .'/../../');
+        $dotenv->load();
+        $this->mailIo = $_ENV['MAIL_IO'];
+        $this->passIo = $_ENV['PASS_IO'];
     }
 
     /**
@@ -118,13 +124,13 @@ class AdminLeedsController {
                 $this->mail->isSMTP();
                 $this->mail->Host = 'smtp.hostinger.com';
                 $this->mail->SMTPAuth = true;
-                $this->mail->Username = 'yosoy@elautomatizador.io'; // Correo electrónico de Gmail
-                $this->mail->Password = '3EALenis@'; // Contraseña de Gmail
+                $this->mail->Username = $this->mailIo; // Correo electrónico de Gmail
+                $this->mail->Password = $this->passIo; // Contraseña de Gmail
                 $this->mail->SMTPSecure = 'ssl';
                 $this->mail->Port = 465;
 
                 // Destinatarios
-                $this->mail->setFrom('yosoy@elautomatizador.io', 'EA - Alfonso Lenis');
+                $this->mail->setFrom($this->mailIo, 'EA - Alfonso Lenis');
                 $this->mail->addAddress($email, $email);
 
                 // Contenido del correo electrónico
