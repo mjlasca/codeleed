@@ -1,4 +1,6 @@
 const form = document.querySelector("form");
+const params = new URLSearchParams(window.location.search);
+const source = params.get('utm_source');
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const code = form.querySelector("#code");
@@ -12,6 +14,7 @@ form.addEventListener("submit", async (event) => {
       code_send: code.value.toUpperCase(),
       mail_send: mail.value,
       sendmail: true,
+      code_source: source ?? 'sin_fuente'
     };
     const restSend = await senMailerLite(obj);
   } else {

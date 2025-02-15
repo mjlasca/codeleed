@@ -14,28 +14,33 @@ use Dotenv\Dotenv;
             $this->mailerliteClient = new MailerLite(['api_key' => $_ENV['MAIL_KEY']]);
         }
 
-       public function validateUser($mail){
+       public function validateUser($mail,$category,$source){
             $groups = $this->mailerliteClient->groups();
             $users = $this->mailerliteClient->subscribers();
             $subscriber = $users->find($mail);
 
             if(count((array)$subscriber) > 3){
+                
                 $subscriberId = $subscriber->id;
                 $groupSubscribers = $groups->getSubscriber($this->groupId, $subscriberId);
  
-                if(count((array)$groupSubscribers) < 4){
+                //if(count((array)$groupSubscribers) < 4){
                     $subscriber = [
-                    'email' => $mail
+                        'email' => $mail,
+                        'fields' => [
+                            'source2' => $source,
+                            'category' => $category
+                        ]
                     ];
                     try{
-                        $groups->addSubscriber($this->groupId, $subscriber); 
+                        $rest = $groups->addSubscriber($this->groupId, $subscriber); 
                         return true;
                     }catch(Exception $e){
                         return false;
                     }
-                }else{
+                /*}else{
                     return true;
-                }
+                }*/
             }
 
             return false;
