@@ -27,15 +27,26 @@
         .hide{
             display: none;
         }
-        input{
-            margin-bottom: 5px;
-        }
         .with-errors{
             color: red;
             padding: 15px;
         }
         .formio{
             margin-top: -200px;
+        }
+        .parr{
+            font-size: small;
+        }
+        .btn-wa{
+            border: solid #25d366 2px;
+        }
+        .btn-wa:hover{
+            background-color: #25d366;
+        }
+        .pre-wa{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
         }
 
     </style>
@@ -53,7 +64,13 @@
             <div class="col-12 card-aut px-3">
                 <div class="p-2">
                     
-                    <h2 class="py-3" id="title-form">Ingresa el código a consultar</h2>
+                    <h3 class="py-3" id="title-form">
+                        ¿Tienes un código? Ingresa y accede ahora
+                        <a href=""></a><br>
+                        <span class="parr">
+                            Si no, escribe REGALO y recibe la guía con 10 automatizaciones explicadas en tu email.
+                        </span>
+                    </h3>
                     
                     <form id="email-form" method="post" action="#" class="form-horizontal" role="form">
                         <div class="form-group">
@@ -72,9 +89,14 @@
                                 <a href="javascript:location.reload();" class="btn btn-warning hide cancel-btn"> Cancelar </a>
                             </div>
                         </div>
+                        <div class="pre-wa">
+                            <a href="https://wa.me/573205563325?text=Hola, estoy interesado en automatizar un proceso. ¿Cómo podríamos trabajar juntos?" 
+                            class="btn btn-wa" target="_blank"><small >¿Buscas ayuda con automatización? Hablemos aquí y te contaré cómo puedo trabajar contigo.</small></a>
+                            
+                        </div>
             
                     </form>
-            
+                    
                     
                     
                     <div id="msg" class="alert mt-4">
