@@ -41,6 +41,13 @@
         #code{
             text-transform: uppercase;
         }
+        .list{
+            overflow-x: auto;
+        }
+        .modal{
+            position: fixed !important;
+        }
+        
 
     </style>
 
@@ -59,8 +66,10 @@
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Contenido bloqueado</h1>
         </div>
         <div class="modal-body">
-            <input type="password" class="form-control" id="passadm" placeholder="Contraseña">
-            <div class="error-modal">
+            <div class="form-group">
+                <input type="password" class="form-control" id="passadm" placeholder="Contraseña">
+                <div class="error-modal">
+                </div>
             </div>
         </div>
         
