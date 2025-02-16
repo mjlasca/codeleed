@@ -140,7 +140,7 @@ class AdminLeedsController {
                 $this->mail->Body = '<center><div style="padding:20px; border-radius: 10px;background-color: #fffbff;border: solid 1px #742575;max-width:450px">
                     <p style="padding:10px; font-size:16px;">A continuación encontrarás el enlace para descargar el archivo que solicitaste. <br>Por favor, haz click en el siguiente enlace:</p>
                     <br>
-                    <a style="margin: 10px 0px 10px 0px; background-color: #742575; color: #fff; padding: 20px; font-size: 20px; border-radius: 5px; border: solid #f0f 1px;" href="'.$basic_uri.'/codeleed/src/pages/next/?utm_m='.str_replace("&", "%26", base64_encode($email)).'&utm_url='.$urlDownload.'&utm_category='.$result[0]['category'].'&utm_source='.$data['code_source'].'">Descargar Archivo</a><br><br><br>
+                    <a style="margin: 10px 0px 10px 0px; background-color: #742575; color: #fff; padding: 20px; font-size: 20px; border-radius: 5px; border: solid #f0f 1px;" href="'.$basic_uri.'/codeleed/src/pages/next/?utm_m='.$email.'&utm_url='.$urlDownload.'&utm_category='.$result[0]['category'].'&utm_source='.$data['code_source'].'">Descargar Archivo</a><br><br><br>
                     <br>
                     <p style="padding:10px; font-size:16px;">Si has recibido este mensaje por error, simplemente elimina este correo electrónico. <br>No estás suscrito hasta que haga click en el botón de arriba.</p>
                     <br><br><br>
