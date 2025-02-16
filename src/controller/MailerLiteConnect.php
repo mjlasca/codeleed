@@ -18,12 +18,13 @@ use Dotenv\Dotenv;
             $groups = $this->mailerliteClient->groups();
             $users = $this->mailerliteClient->subscribers();
             $subscriber = $users->find($mail);
+            echo $mail;
 
-            if(count((array)$subscriber) > 3){
+            //if(count((array)$subscriber) > 3){
                 
-                $subscriberId = $subscriber->id;
-                $groupSubscribers = $groups->getSubscriber($this->groupId, $subscriberId);
- 
+            /*    $subscriberId = $subscriber->id;
+                $groupSubscribers = $groups->getSubscriber($this->groupId, $subscriberId);*/
+                
                 //if(count((array)$groupSubscribers) < 4){
                     $subscriber = [
                         'email' => $mail,
@@ -41,7 +42,7 @@ use Dotenv\Dotenv;
                 /*}else{
                     return true;
                 }*/
-            }
+            //}
 
             return false;
         }
