@@ -49,7 +49,8 @@ use Dotenv\Dotenv;
                             'category' => $category,
                             'city' => $city,
                             'country2' => $country
-                        ]
+                        ],
+                        'status' => 'active'
                     ];
                     try{
                         $rest = $groups->addSubscriber($this->groupId, $subscriber); 
