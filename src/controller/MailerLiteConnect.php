@@ -12,7 +12,7 @@ use Dotenv\Dotenv;
             $dotenv = Dotenv::createImmutable(__DIR__ .'/../../');
             $dotenv->load();
             $this->groupId = $_ENV['MAIL_GID'];
-            $this->tokenip = $_ENV['TOKEN_IP'];
+            $this->tokenip = $_ENV['TOKEN_IP2'];
             $this->mailerliteClient = new MailerLite(['api_key' => $_ENV['MAIL_KEY']]);
         }
 
@@ -23,12 +23,11 @@ use Dotenv\Dotenv;
             $country = "";
             $city = "";
             $ip = $_SERVER['REMOTE_ADDR'];
-            if (strpos($ip, ':') > -1) {
-                $url = "https://ipinfo.io/{$ip}?token=586845fa5e3b9b";
-            }else{
+            //if (strpos($ip, ':') > -1) {
+                $url = "https://ipinfo.io/{$ip}?token={$this->tokenip}";
+            /*}else{
                 $url = "https://ipgeolocation.abstractapi.com/v1/?api_key={$this->tokenip}&ip_address={$ip}";
-            }
-            
+            }*/
             try {
                 $response = file_get_contents($url);
                 
