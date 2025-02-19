@@ -6,11 +6,13 @@ use Dotenv\Dotenv;
     {
         protected $mailerliteClient;
         private $groupId;
+        private $tokenip;
 
         public function __construct() {
             $dotenv = Dotenv::createImmutable(__DIR__ .'/../../');
             $dotenv->load();
             $this->groupId = $_ENV['MAIL_GID'];
+            $this->tokenip = $_ENV['TOKEN_IP'];
             $this->mailerliteClient = new MailerLite(['api_key' => $_ENV['MAIL_KEY']]);
         }
 
@@ -18,8 +20,16 @@ use Dotenv\Dotenv;
             $groups = $this->mailerliteClient->groups();
             $users = $this->mailerliteClient->subscribers();
             $subscriber = $users->find($mail);
-            echo $mail;
-
+            $country = "";
+            $city = "";
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $url = "https://ipgeolocation.abstractapi.com/v1/?api_key={$this->tokenip}&ip_address={$ip}";
+            $response = file_get_contents($url);
+            if ($response !== false) {
+                $data = json_decode($response, true);
+                $country = $data['country'];
+                $city = $data['city'];
+            }
             //if(count((array)$subscriber) > 3){
                 
             /*    $subscriberId = $subscriber->id;
@@ -30,7 +40,9 @@ use Dotenv\Dotenv;
                         'email' => $mail,
                         'fields' => [
                             'source2' => $source,
-                            'category' => $category
+                            'category' => $category,
+                            'city' => $city,
+                            'country2' => $country
                         ]
                     ];
                     try{
