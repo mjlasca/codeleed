@@ -22,8 +22,8 @@ use Dotenv\Dotenv;
             $subscriber = $users->find($mail);
             $country = "";
             $city = "";
+            $ip = $_SERVER['REMOTE_ADDR'];
             try {
-                $ip = $_SERVER['REMOTE_ADDR'];
                 $url = "https://ipgeolocation.abstractapi.com/v1/?api_key={$this->tokenip}&ip_address={$ip}";
                 $response = file_get_contents($url);
                 
@@ -33,7 +33,7 @@ use Dotenv\Dotenv;
                     $city = $data['city'];
                 }
             } catch (\Throwable $th) {
-                $this->log($th->getMessage(),'Error-ipapi');
+                //
             }
             
             //if(count((array)$subscriber) > 3){
@@ -50,13 +50,13 @@ use Dotenv\Dotenv;
                             'city' => $city,
                             'country2' => $country
                         ],
-                        'status' => 'active'
+                        'status' => 'active',
+                        'ip_address' => $ip
                     ];
                     try{
                         $rest = $groups->addSubscriber($this->groupId, $subscriber); 
                         return true;
                     }catch(Exception $e){
-                        $this->log($e->getMessage(),'Error-subscriber');
                         return false;
                     }
                 /*}else{
