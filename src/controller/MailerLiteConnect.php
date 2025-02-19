@@ -23,8 +23,13 @@ use Dotenv\Dotenv;
             $country = "";
             $city = "";
             $ip = $_SERVER['REMOTE_ADDR'];
-            try {
+            if (strpos($ip, ':') > -1) {
+                $url = "https://ipinfo.io/{$ip}?token=586845fa5e3b9b";
+            }else{
                 $url = "https://ipgeolocation.abstractapi.com/v1/?api_key={$this->tokenip}&ip_address={$ip}";
+            }
+            
+            try {
                 $response = file_get_contents($url);
                 
                 if ($response !== false) {
@@ -36,6 +41,8 @@ use Dotenv\Dotenv;
                 //
             }
             
+            
+
             //if(count((array)$subscriber) > 3){
                 
             /*    $subscriberId = $subscriber->id;
